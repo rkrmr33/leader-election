@@ -32,8 +32,8 @@ var (
 
 	holderId           = flags.String("id", uuid.NewString(), "The holder identity")
 	leaseName          = flags.String("lease-name", "", "The lease name")
-	leaseDuration      = flags.Duration("lease-duration", 15*time.Second, "The duration of the lease")
-	leaseRenewDuration = flags.Duration("lease-renew-duration", 10*time.Second, "The duration the leader will try to refresh the lease")
+	leaseDuration      = flags.Duration("lease-duration", 10*time.Second, "The duration of the lease")
+	leaseRenewDuration = flags.Duration("lease-renew-duration", 5*time.Second, "The duration the leader will try to refresh the lease")
 	namespace          = flags.StringP("namespace", "n", "default", "The lease namespace")
 	kubeconfig         = flags.String("kubeconfig", "", "Path to kubeconfig file, not relevant if running in-cluster")
 	addr               = flags.String("addr", ":4040", "Address to serve http server on")
