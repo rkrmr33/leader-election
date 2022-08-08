@@ -18,41 +18,38 @@ Add the following container to your deployment:
   - --lease-renew-duration=$(LEASE_RENEW_DURATION)
   env:
   - name: NAMESPACE
-  valueFrom:
+    valueFrom:
       fieldRef:
-      fieldPath: metadata.namespace
+        fieldPath: metadata.namespace
   - name: POD_NAME
-  valueFrom:
+    valueFrom:
       fieldRef:
-      fieldPath: metadata.name
+        fieldPath: metadata.name
   - name: LEASE_NAME
-  value: example
+    value: example
   - name: LEASE_DURATION
-  value: 10s
+    value: 10s
   - name: LEASE_RENEW_DURATION
-  value: 5s
-  ports:
-  - name: http # no need to expose this if it's a sidecar container
-      containerPort: 4040
+    value: 5s
   securityContext:
-  allowPrivilegeEscalation: false
+    allowPrivilegeEscalation: false
   livenessProbe:
-  httpGet:
+    httpGet:
       path: /healthz
       port: 4040
-  initialDelaySeconds: 15
-  periodSeconds: 20
+    initialDelaySeconds: 15
+    periodSeconds: 20
   readinessProbe:
-  httpGet:
+    httpGet:
       path: /readyz
       port: 4040
-  initialDelaySeconds: 5
-  periodSeconds: 10
+    initialDelaySeconds: 5
+    periodSeconds: 10
   resources:
-  limits:
+    limits:
       cpu: 200m
       memory: 200Mi
-  requests:
+    requests:
       cpu: 100m
       memory: 100Mi
   imagePullPolicy: IfNotPresent
